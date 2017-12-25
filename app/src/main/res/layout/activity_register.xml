@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/register_bg"
-    tools:context=".RegisterActivity">
+    tools:context=".activity.RegisterActivity">
     <include layout="@layout/main_title_bar"/>
     <ImageView
         android:layout_marginTop="25dp"
