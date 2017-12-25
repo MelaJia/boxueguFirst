@@ -1,14 +1,17 @@
-package cn.edu.gdmec.android.boxuegu;
+package cn.edu.gdmec.android.boxuegu.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import cn.edu.gdmec.android.boxuegu.activity.MainActivity;
+import cn.edu.gdmec.android.boxuegu.R;
 
 public class SplashActivity extends AppCompatActivity {
 

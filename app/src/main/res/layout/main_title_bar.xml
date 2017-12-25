@@ -6,12 +6,21 @@
     android:background="@android:color/transparent">
     <TextView
         android:id="@+id/tv_back"
-        android:background="@drawable/ggo_back_selector"
+        android:background="@drawable/go_back_selector"
+        android:layout_centerVertical="true"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
+
         />
+    <TextView
+        android:id="@+id/tv_main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+       />
 
 
 
