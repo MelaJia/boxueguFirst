@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.boxuegu.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -14,15 +15,18 @@ import cn.edu.gdmec.android.boxuegu.activity.MainActivity;
 import cn.edu.gdmec.android.boxuegu.R;
 
 public class SplashActivity extends AppCompatActivity {
+   // private TextView tv_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        //设置此界面为竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
     }
     private void init(){
-       TextView tv_version = (TextView) findViewById(R.id.tv_splash_version);
+       TextView tv_version = (TextView) findViewById(R.id.tv_version);
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(),0);
             tv_version.setText("V"+info.versionName);

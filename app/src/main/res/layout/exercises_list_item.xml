@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/tv_over"
+        android:id="@+id/tv_order"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:background="@drawable/exercises_bg_1"
