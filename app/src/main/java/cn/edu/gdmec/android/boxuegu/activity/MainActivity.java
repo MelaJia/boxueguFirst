@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.adapter.ExercisesAdapter;
+import cn.edu.gdmec.android.boxuegu.view.ExerciseView;
 import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
