@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (TextUtils.isEmpty(pswAgain)){
                     Toast.makeText(RegisterActivity.this,"请再次输入密码",Toast.LENGTH_SHORT).show();
                     return;
-                }else if (!et_psw.equals(pswAgain)){
+                }else if (!psw.equals(pswAgain)){
                     Toast.makeText(RegisterActivity.this,"请输入的两次密码不一样",Toast.LENGTH_SHORT).show();
                     return;
                 }else if(isExistUserName(userName)){
