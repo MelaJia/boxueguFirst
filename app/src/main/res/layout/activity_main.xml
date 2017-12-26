@@ -33,7 +33,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
             <TextView
-                android:id="@+id/botton_bar_text_course"
+                android:id="@+id/bottom_bar_text_course"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -48,7 +48,7 @@
                 android:id="@+id/bottom_bar_image_course"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_above="@id/botton_bar_text_course"
+                android:layout_above="@id/bottom_bar_text_course"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
@@ -61,7 +61,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
             <TextView
-                android:id="@+id/botton_bar_text_exercises"
+                android:id="@+id/bottom_bar_text_exercises"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -76,7 +76,7 @@
                 android:id="@+id/bottom_bar_image_exercises"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_above="@id/botton_bar_text_exercises"
+                android:layout_above="@id/bottom_bar_text_exercises"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
@@ -90,7 +90,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
             <TextView
-                android:id="@+id/botton_bar_text_myinfo"
+                android:id="@+id/bottom_bar_text_myinfo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -105,7 +105,7 @@
                 android:id="@+id/bottom_bar_image_myinfo"
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_above="@id/botton_bar_text_myinfo"
+                android:layout_above="@id/bottom_bar_text_myinfo"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
