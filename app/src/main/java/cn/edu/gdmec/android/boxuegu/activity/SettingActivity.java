@@ -16,11 +16,13 @@ import cn.edu.gdmec.android.boxuegu.R;
 
 public class SettingActivity extends AppCompatActivity {
 
+    public static SettingActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
+        instance = this;
         init();
     }
 
@@ -44,6 +46,9 @@ public class SettingActivity extends AppCompatActivity {
         rl_modify_psw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //跳转到修改密码页面
+                Intent intent = new Intent(SettingActivity.this,ModifyPswActivity.class);
+                startActivity(intent);
 
             }
         });
