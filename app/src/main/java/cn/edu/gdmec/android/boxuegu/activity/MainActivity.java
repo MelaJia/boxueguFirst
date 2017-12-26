@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case 2:
                 mMyInfoBtn.setSelected(true);
-                iv_myInfo.setImageResource(R.drawable.main_exercises_icon_selected);
+                iv_myInfo.setImageResource(R.drawable.main_my_icon_selected);
                 tv_myInfo.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.GONE);
         }
