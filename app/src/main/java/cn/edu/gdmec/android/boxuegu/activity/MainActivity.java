@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_main_title.setText("博学谷课程");
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
         rl_title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
+        //隐藏返回按钮
         tv_back.setVisibility(View.GONE);
         initBodyLayout();
 
@@ -73,12 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * */
     private void initBottomBar(){
         mBottomLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
+
         mCourseBtn = findViewById(R.id.bottom_bar_course_btn);
         mExercisesBtn = findViewById(R.id.bottom_bar_exercises_btn);
         mMyInfoBtn = findViewById(R.id.bottom_bar_myinfo_btn);
+
         tv_course = (TextView) findViewById(R.id.bottom_bar_text_course);
         tv_exercises = (TextView) findViewById(R.id.bottom_bar_text_exercises);
         tv_myInfo = (TextView) findViewById(R.id.bottom_bar_text_myinfo);
+
         iv_course = (ImageView) findViewById(R.id.bottom_bar_image_course);
         iv_exercise = (ImageView) findViewById(R.id.bottom_bar_image_exercises);
         iv_myInfo = (ImageView) findViewById(R.id.bottom_bar_image_myinfo);
@@ -88,6 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void initBodyLayout(){
         mBodyLayout = (FrameLayout) findViewById(R.id.main_body);
+    }
+
+    //设置底部三个按钮的点击监听事件
+    private void setListener(){
+        for (int i=0;i<mBottomLayout.getChildCount();i++){
+            mBottomLayout.getChildAt(i).setOnClickListener(this);
+        }
+
     }
     /*
      * 控件的点击事件
@@ -114,24 +127,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-    //设置底部三个按钮的点击监听事件
-    private void setListener(){
-        for (int i=0;i<mBottomLayout.getChildCount();i++){
-            mBottomLayout.getChildAt(i).setOnClickListener(this);
-        }
 
-    }
     //清除底部按钮的选中状态
     private void clearBottomImageState(){
         tv_course.setTextColor(Color.parseColor("#666666"));
         tv_exercises.setTextColor(Color.parseColor("#666666"));
         tv_myInfo.setTextColor(Color.parseColor("#666666"));
+
         iv_course.setImageResource(R.drawable.main_course_icon);
         iv_exercise.setImageResource(R.drawable.main_exercises_icon);
         iv_myInfo.setImageResource(R.drawable.main_my_icon);
+
         for (int i = 0; i < mBodyLayout.getChildCount(); i++){
             mBottomLayout.getChildAt(i).setSelected(false);
 
+        }
+    }
+
+    /*
+    * 显示对应的页面
+    * */
+    private void selectDisplayView(int index){
+        removeAllView();
+        createView(index);
+        setSelectedStatus(index);
+    }
+    /**
+     * 移除不需要的视图，遍历孩子改变可变性
+     * */
+    private void removeAllView(){
+        for (int i = 0; i < mBodyLayout.getChildCount(); i++){
+            mBodyLayout.getChildAt(i).setVisibility(View.GONE);
         }
     }
     /**
@@ -161,14 +187,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     /**
-     * 移除不需要的视图
-     * */
-    private void removeAllView(){
-        for (int i = 0; i < mBodyLayout.getChildCount(); i++){
-            mBodyLayout.getChildAt(i).setVisibility(View.GONE);
-        }
-    }
-    /**
      * 设置界面view的初始化状态
      * */
     private void setInitStatus(){
@@ -176,22 +194,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSelectedStatus(0);
         createView(0);
     }
-    /*
-    * 显示对应的页面
-    * */
-    private void selectDisplayView(int index){
-        removeAllView();
-        createView(index);
-        setSelectedStatus(index);
-    }
+
+    private MyInfoView mMyInfoView;
+
     /**
      * 选择视图
      * */
     private void createView(int viewIndex){
         switch (viewIndex){
             case 0:
+                //课程界面
                 break;
             case 1:
+                //习题界面
                 if (mExercisesBtn == null){
 
 
@@ -200,6 +215,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case 2:
+                //我界面
+                if (mMyInfoView == null){
+                    mMyInfoView = new MyInfoView(this);
+                    mBodyLayout.addView(mMyInfoView.getView());
+                }else {
+                    mMyInfoView.getView();
+
+                }
+                mMyInfoView.showView();
                 break;
         }
     }
@@ -214,6 +238,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //登录成功时显示课程界面
                 clearBottomImageState();
                 selectDisplayView(0);
+            }
+            if (mMyInfoView != null){
+                mMyInfoView.setLoginParams(isLogin);
             }
         }
     }
