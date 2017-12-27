@@ -12,6 +12,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
     public static final String DB_NAME = "bxg.db";
     public static final String U_USERINFO = "userinfo";
+
     public SQLiteHelper(Context context){
         super(context,DB_NAME,null,DB_VERSION);
     }
@@ -19,8 +20,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
         //创建用户信息表
-        db.execSQL("CREATE TABLE IF NOT EXISTE " + U_USERINFO + "( " +
-         "_id INTEGER PRIMARY KEY AUTOINREMENT, "
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + U_USERINFO + "( " +
+         "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
          + "userName VARCHAR,"//用户名
          + "nickName VARCHAR," //昵称
          + "sex VARCHAR,"       //性bie
