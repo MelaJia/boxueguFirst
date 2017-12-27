@@ -198,6 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private MyInfoView mMyInfoView;
+    private ExerciseView mExerciseView;
 
     /**
      * 选择视图
@@ -209,12 +210,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case 1:
                 //习题界面
-                if (mExercisesBtn == null){
-
+                if (mExerciseView == null){
+                    mExerciseView = new ExerciseView(this);
+                    mBodyLayout.addView(mExerciseView.getView());
 
                 }else {
+                    mExerciseView.getView();
 
                 }
+                mExerciseView.showView();
                 break;
             case 2:
                 //我界面
