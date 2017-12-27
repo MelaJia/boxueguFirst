@@ -85,6 +85,12 @@ public class FindPswActivity extends AppCompatActivity {
                 }
             }
         });
+        tv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FindPswActivity.this.finish();
+            }
+        });
 
 
     }
