@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.adapter.ExercisesAdapter;
+import cn.edu.gdmec.android.boxuegu.view.CourseView;
 import cn.edu.gdmec.android.boxuegu.view.ExerciseView;
 import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
 
@@ -199,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private MyInfoView mMyInfoView;
     private ExerciseView mExerciseView;
+    private CourseView mCourseView;
 
     /**
      * 选择视图
@@ -207,6 +209,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (viewIndex){
             case 0:
                 //课程界面
+                if(mCourseView == null){
+                    mCourseView = new CourseView(this);
+                    mBodyLayout.addView(mCourseView.getView());
+                }else{
+                    mCourseView.getView();
+                }
+                mCourseView.showView();
                 break;
             case 1:
                 //习题界面

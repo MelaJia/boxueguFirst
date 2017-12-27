@@ -26,6 +26,7 @@ public class ViewPagerIndicator extends LinearLayout {
     public ViewPagerIndicator(Context context, AttributeSet attrs){
         super(context,attrs);
         setGravity(Gravity.CENTER);
+        this.context = context;
     }
 
     public void setCurrentPosition(int currentIndex){
