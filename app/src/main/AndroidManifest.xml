@@ -21,10 +21,11 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.ModifyPswActivity" />
-        <activity android:name=".activity.FindPswActivity"></activity>
-        <activity android:name=".activity.ExercisesDetailActivity"></activity>
-        <activity android:name=".activity.UserInfoActivity"></activity>
-        <activity android:name=".activity.ChangeUserInfoActivity"></activity>
+        <activity android:name=".activity.FindPswActivity" />
+        <activity android:name=".activity.ExercisesDetailActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
+        <activity android:name=".activity.ChangeUserInfoActivity" />
+        <activity android:name=".activity.ViewListActivity"></activity>
     </application>
 
 </manifest>
