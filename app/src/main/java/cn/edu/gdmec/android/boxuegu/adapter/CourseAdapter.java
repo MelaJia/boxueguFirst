@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.boxuegu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.activity.VideoListActivity;
 import cn.edu.gdmec.android.boxuegu.bean.CourseBean;
 
 /**
@@ -34,15 +36,32 @@ public class CourseAdapter extends BaseAdapter {
         return cbl == null ? 0 : cbl.size();
     }
 
+
+/**
+ * 根据position得到对应的item对象
+ */
     @Override
-    public Object getItem(int position) {
-        return cbl == null ? 0 : cbl.get(position);
+    public List<CourseBean> getItem(int position) {
+        return cbl == null ? null : cbl.get(position);
     }
 
+    /**
+     * 根据position得到对应的item的ID
+     * @param position
+     * @return
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
+
+    /**
+     * 根据position得到对一个item视图
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -62,32 +81,39 @@ public class CourseAdapter extends BaseAdapter {
             vh = (ViewHolder) convertView.getTag();
         }
         //开始绑定item的数据
-        List<CourseBean> list = (List<CourseBean>) getItem(position);
+        final List<CourseBean> list = getItem(position);
         if (list != null){
-            for (int i = 0;i<list.size();i++){
-                CourseBean bean = list.get(i);
+            for (int i = 0;i < list.size();i++){
+                final CourseBean bean = list.get(i);
                 switch (i){
                     case 0://左边
                         vh.tv_left_img_title.setText(bean.imgTitle);
                         vh.tv_left_title.setText(bean.title);
                         setLeftImg(bean.id,vh.iv_left_img);
                         vh.iv_left_img.setOnClickListener(new View.OnClickListener(){
-
                             @Override
                             public void onClick(View view) {
                                 //跳转到课程详情页面
+                                Intent intent = new Intent(context, VideoListActivity.class);
+                                intent.putExtra("id",bean.id);
+                                intent.putExtra("intro",bean.intro);
+                                context.startActivity(intent);
                             }
                         });
                         break;
                     case 1://右边
                         vh.tv_right_img_title.setText(bean.imgTitle);
                         vh.tv_right_title.setText(bean.title);
-                        setLeftImg(bean.id,vh.iv_right_img);
+                        setRightImg(bean.id,vh.iv_right_img);
                         vh.iv_right_img.setOnClickListener(new View.OnClickListener(){
 
                             @Override
                             public void onClick(View view) {
                                 //跳转到课程详情页面
+                                Intent intent = new Intent(context, VideoListActivity.class);
+                                intent.putExtra("id",bean.id);
+                                intent.putExtra("intro",bean.intro);
+                                context.startActivity(intent);
                             }
                         });
                         break;

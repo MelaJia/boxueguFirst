@@ -25,7 +25,7 @@
         <activity android:name=".activity.ExercisesDetailActivity" />
         <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.ChangeUserInfoActivity" />
-        <activity android:name=".activity.ViewListActivity"></activity>
+        <activity android:name=".activity.VideoListActivity"></activity>
     </application>
 
 </manifest>

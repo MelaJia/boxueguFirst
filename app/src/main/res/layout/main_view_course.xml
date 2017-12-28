@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    >
-<include layout="@layout/main_adbanner"/>
+    android:orientation="vertical">
+    <include layout="@layout/main_adbanner"/>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="45dp">
@@ -31,7 +32,9 @@
         android:layout_height="1dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:background="#E4E4E4"></View>
+        android:background="#E4E4E4">
+
+    </View>
 
     <ListView
         android:id="@+id/lv_list"
@@ -40,6 +43,7 @@
         android:layout_marginBottom="55dp"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:scrollbars="none"></ListView>
+        android:scrollbars="none">
+    </ListView>
 
 </LinearLayout>

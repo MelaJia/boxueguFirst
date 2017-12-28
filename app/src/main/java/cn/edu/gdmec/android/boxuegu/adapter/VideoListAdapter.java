@@ -21,8 +21,8 @@ import cn.edu.gdmec.android.boxuegu.bean.VideoBean;
 public class VideoListAdapter extends BaseAdapter {
 
     private Context context;
-    private List<VideoBean> vbl;
-    private int selectedPosition = -1; //
+    private List<VideoBean> vbl;  //视频列表数据
+    private int selectedPosition = -1; //点击时选中位置
     private OnSelectListener onSelectListener;
 
 
@@ -52,7 +52,7 @@ public class VideoListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public VideoBean getItem(int i) {
         return vbl == null ? null : vbl.get(i);
     }
 
@@ -96,7 +96,7 @@ public class VideoListAdapter extends BaseAdapter {
                 onSelectListener.onSelect(position, vh.iv_icon);
             }
         });
-        return null;
+        return convertView;
     }
 
     class ViewHolder {

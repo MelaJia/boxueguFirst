@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context="cn.edu.gdmec.android.boxuegu.activity.ViewListActivity">
+    tools:context="cn.edu.gdmec.android.boxuegu.activity.VideoListActivity">
 
     <TextView
         android:layout_width="fill_parent"
@@ -15,7 +15,9 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -33,12 +35,12 @@
                 android:text="简 介"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
-
+        </RelativeLayout>
             <View
                 android:layout_width="1dp"
                 android:layout_height="50dp"
                 android:background="#C3C3C3" />
-        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -59,8 +61,8 @@
         </RelativeLayout>
     </LinearLayout>
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
         <ListView
             android:id="@+id/lv_video_list"
             android:layout_width="fill_parent"
@@ -70,9 +72,7 @@
             android:layout_marginRight="15dp"
             android:divider="#E4E4E4"
             android:dividerHeight="1dp"
-            android:scrollbars="none">
-
-        </ListView>
+            android:scrollbars="none"/>
         <ScrollView
             android:id="@+id/sv_chapter_intro"
             android:layout_width="fill_parent"

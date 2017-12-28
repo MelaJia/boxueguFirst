@@ -12,6 +12,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
     public static final String DB_NAME = "bxg.db";
     public static final String U_USERINFO = "userinfo";
+    public static final String U_VIDEO_PLAY_LIST = "videoplaylist";
 
     public SQLiteHelper(Context context){
         super(context,DB_NAME,null,DB_VERSION);
@@ -27,12 +28,26 @@ public class SQLiteHelper extends SQLiteOpenHelper {
          + "sex VARCHAR,"       //性bie
                 + "signature VARCHAR"//签名
                 + ")" );
+
+
+    //创建视频播放记录
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + U_VIDEO_PLAY_LIST + "( " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "userName VARCHAR,"//用户名
+                + "chapterId INT," //章节id
+                + "videoId VARCHAR,"//小节id
+                + "videoPath VARCHAR,"
+                + "title VARCHAR,"  //章节名字
+                + "secondTitle VARCHAR" // 视频名字
+                + ")");
     }
+
     //数据库升级 版本号增加 升级调用此方法
 
     @Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion){
         db.execSQL("DROP TABLE IF NOT EXISTS " + U_USERINFO);
+        db.execSQL("DROP TABLE IF NOT EXISTS " + U_VIDEO_PLAY_LIST);
         onCreate(db);
 
     }
