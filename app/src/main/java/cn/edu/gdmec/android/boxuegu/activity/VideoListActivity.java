@@ -54,7 +54,7 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
         //从课程界面传过来的章节ID
         chapterId = getIntent().getIntExtra("id", 0);
         //从课程界面传过来的章节简介
-        intro = getIntent().getStringExtra("info");
+        intro = getIntent().getStringExtra("intro");
         db = DBUtils.getInstance(VideoListActivity.this);
         initData();
         initView();
@@ -86,7 +86,10 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
 
                     }
                     //跳转到视频播放界面
-                   // Intent intent=new Intent(VideoListActivity.this,)
+                    Intent intent=new Intent(VideoListActivity.this,VideoPlayActivity.class);
+                    intent.putExtra("videoPath",videoPath);
+                    intent.putExtra("position",position);
+                    startActivityForResult(intent,1);
 
                 }
             }

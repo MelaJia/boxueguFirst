@@ -26,7 +26,7 @@ public class PlayHistoryAdapter extends BaseAdapter {
 
     public PlayHistoryAdapter(Context context){
         this.context = context;
-        notifyDataSetChanged();
+       // notifyDataSetChanged();
     }
     @Override
     public int getCount() {
@@ -44,7 +44,7 @@ public class PlayHistoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder vh;
         if (convertView == null){
             vh = new ViewHolder();
@@ -100,6 +100,7 @@ public class PlayHistoryAdapter extends BaseAdapter {
                 if (bean == null) return;
                 //跳转到视频播放界面
                 Intent intent = new Intent(context,VideoPlayActivity.class);
+                intent.putExtra("videoPath",bean.videoPath);
                 context.startActivity(intent);
             }
         });

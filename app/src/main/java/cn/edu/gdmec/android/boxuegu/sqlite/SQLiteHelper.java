@@ -35,7 +35,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "userName VARCHAR,"//用户名
                 + "chapterId INT," //章节id
-                + "videoId VARCHAR,"//小节id
+                + "videoId INT,"//小节id
                 + "videoPath VARCHAR,"
                 + "title VARCHAR,"  //章节名字
                 + "secondTitle VARCHAR" // 视频名字

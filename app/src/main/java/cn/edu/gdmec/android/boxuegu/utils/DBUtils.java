@@ -21,7 +21,7 @@ public class DBUtils {
     private static SQLiteHelper helper;
     private static SQLiteDatabase db;
     private static DBUtils instance = null;
-    private DBUtils(Context context) {
+    public DBUtils(Context context) {
         helper = new SQLiteHelper(context);
         //getWritableDatabase();可写的数据库对象
         db = helper.getWritableDatabase();
@@ -71,7 +71,7 @@ public class DBUtils {
 //保存视频播放记录
     public void saveVideoPlayList(VideoBean bean, String userName) {
         //判断如果里面已经有此记录则需要先删除再重新存放
-        if (hasVideoPlay(bean.chapterId, bean.chapterId, userName)) {
+        if (hasVideoPlay(bean.chapterId, bean.videoId, userName)) {
             boolean isDelete = delVideoPlay(bean.chapterId, bean.videoId, userName);
             if (!isDelete) {
                 //没有删除成功
@@ -97,7 +97,7 @@ public class DBUtils {
      * @return
      */
 
-    private boolean delVideoPlay(int chapterId, int videoId, String userName) {
+   public boolean delVideoPlay(int chapterId, int videoId, String userName) {
         boolean delSuccess = false;
         int row = db.delete(SQLiteHelper.U_VIDEO_PLAY_LIST, " chapterId=? AND videoId=? AND userName=?",
                 new String[]{chapterId + "", videoId + "", userName});
@@ -114,10 +114,10 @@ public class DBUtils {
      * @param userName
      * @return
      */
-    private boolean hasVideoPlay(int chapterId, int videoId, String userName) {
+    public boolean hasVideoPlay(int chapterId, int videoId, String userName) {
         boolean hasVideo = false;
-        String sql = "SELECT * FROM " + SQLiteHelper.U_VIDEO_PLAY_LIST + " WHERE chapterId=? AND videoId = ? AND userName = ?";
-        Cursor cursor = db.rawQuery(sql, new String[]{chapterId + "", videoId + "", userName});
+        String sql = "SELECT * FROM " + SQLiteHelper.U_VIDEO_PLAY_LIST + " WHERE chapterId=? AND videoId=? AND userName =?";
+        Cursor cursor = db.rawQuery(sql, new String[]{ chapterId + "", videoId + "", userName});
         if (cursor.moveToFirst()) {
             hasVideo = true;
         }
@@ -126,7 +126,8 @@ public class DBUtils {
     }
 
     public ArrayList<VideoBean> getVideoHistory(String userName){
-        String sql="SELECT * FROM " + SQLiteHelper.U_USERINFO + " WHERE userName = ?";
+        String sql="SELECT * FROM " + SQLiteHelper.U_VIDEO_PLAY_LIST + " WHERE userName = ?";
+       // Cursor cursor = db.rawQuery(sql,new String[]{userName});
         Cursor cursor = db.rawQuery(sql,new String[]{userName});
         ArrayList<VideoBean> vbl = new ArrayList<>();
         VideoBean bean = null;
