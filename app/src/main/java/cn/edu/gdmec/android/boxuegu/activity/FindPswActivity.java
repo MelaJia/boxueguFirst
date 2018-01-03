@@ -79,7 +79,7 @@ public class FindPswActivity extends AppCompatActivity {
                     }else{
                         //
                         tv_reset_psw.setVisibility(View.VISIBLE);
-                        tv_reset_psw.setText("初始密码：12356");
+                        tv_reset_psw.setText("初始密码：123456");
                         savePsw(userName);
                     }
                 }

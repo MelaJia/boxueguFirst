@@ -19,6 +19,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     private String videoPath;
     private int position;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         videoPath = getIntent().getStringExtra("videoPath");
         position = getIntent().getIntExtra("position",0);
+
         init();
 
     }
@@ -41,11 +43,16 @@ public class VideoPlayActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(videoPath)){
             Toast.makeText(this,"本地没有视频，暂时无法播放",Toast.LENGTH_SHORT).show();
             return;
-        }
+        }else if (videoPath.equals("beyond.mp4")){
+            String url = "android.resource://" + getPackageName() + "/" + R.raw.beyond;
+            videoView.setVideoPath(url);
+            videoView.start();
+        }else if (videoPath.equals("video11.mp4")) {
 
-        String url = "android.resource://" + getPackageName() + "/" + R.raw.video11;
-        videoView.setVideoPath(url);
-        videoView.start();
+            String url = "android.resource://" + getPackageName() + "/" + R.raw.video11;
+            videoView.setVideoPath(url);
+            videoView.start();
+        }
 
     }
 
