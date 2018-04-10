@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (isLogin){
                 //登录成功时显示课程界面
                 clearBottomImageState();
-                selectDisplayView(0);
+                selectDisplayView(2);
             }
             if (mMyInfoView != null){
                 mMyInfoView.setLoginParams(isLogin);

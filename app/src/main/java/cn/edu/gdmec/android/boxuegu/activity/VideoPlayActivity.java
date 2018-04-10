@@ -44,14 +44,14 @@ public class VideoPlayActivity extends AppCompatActivity {
             Toast.makeText(this,"本地没有视频，暂时无法播放",Toast.LENGTH_SHORT).show();
             return;
         }else if (videoPath.equals("beyond.mp4")){
-            String url = "android.resource://" + getPackageName() + "/" + R.raw.beyond;
-            videoView.setVideoPath(url);
-            videoView.start();
+        //    String url = "android.resource://" + getPackageName() + "/" + R.raw.beyond;
+         //   videoView.setVideoPath(url);
+           // videoView.start();
         }else if (videoPath.equals("video11.mp4")) {
 
-            String url = "android.resource://" + getPackageName() + "/" + R.raw.video11;
-            videoView.setVideoPath(url);
-            videoView.start();
+            //String url = "android.resource://" + getPackageName() + "/" + R.raw.video11;
+            //videoView.setVideoPath(url);
+            //videoView.start();
         }
 
     }

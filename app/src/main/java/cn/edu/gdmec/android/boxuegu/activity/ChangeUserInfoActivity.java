@@ -93,6 +93,17 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
                             Toast.makeText(ChangeUserInfoActivity.this, "签名不能位空", Toast.LENGTH_SHORT).show();
                         }
                         break;
+                    case 3:
+                        if (!TextUtils.isEmpty(etContent)) {
+                            data.putExtra("qq", etContent);
+                            setResult(RESULT_OK, data);
+                            Toast.makeText(ChangeUserInfoActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                            ChangeUserInfoActivity.this.finish();
+                        } else {
+                            Toast.makeText(ChangeUserInfoActivity.this, "qq不能位空", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+
                 }
             }
         });
@@ -143,6 +154,26 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
                             String str = editable.toString();
                             //截取字符串
                             String newStr = str.substring(0, 16);
+                            et_content.setText(newStr);
+                            editable = et_content.getText();
+                            //新字符串长度
+                            int newLen = editable.length();
+                            //旧的光标位置超过新字符串的长度
+                            if (selEndIndex > newLen) {
+                                selEndIndex = editable.length();
+
+                            }
+                            //设置新光标所在的位置
+                            Selection.setSelection(editable, selEndIndex);
+                        }
+                        break;
+                    case 3:
+                        //qq限制16个汉子，超过16个需要截掉多余文字
+                        if (len > 12) {
+                            int selEndIndex = Selection.getSelectionEnd(editable);
+                            String str = editable.toString();
+                            //截取字符串
+                            String newStr = str.substring(0, 12);
                             et_content.setText(newStr);
                             editable = et_content.getText();
                             //新字符串长度

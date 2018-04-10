@@ -33,13 +33,16 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_user_name;
     private TextView tv_sex;
     private TextView tv_signature;
+    private TextView tv_qq;
     private RelativeLayout rl_nickName;
     private RelativeLayout rl_sex;
     private RelativeLayout rl_signature;
     private RelativeLayout rl_read;
+    private RelativeLayout rl_qq;
 
     private static final int CHANGE_NICKNAME = 1;//修改昵称的自定义常量
     private static final int CHANGE_SIGNATURE = 2;//修改签名的自定义常量
+    private static final int CHANGE_QQ = 3;//修改签名的自定义常量
 
     private ImageView mImageView; //用于显示图片
     private String mPhotoPath;
@@ -80,6 +83,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         rl_signature = (RelativeLayout) findViewById(R.id.rl_signature);
         tv_signature = (TextView) findViewById(R.id.tv_signature);
 
+        rl_qq=findViewById(R.id.rl_qq);
+        tv_qq=findViewById(R.id.qq);
+
         rl_read = (RelativeLayout) findViewById(R.id.rl_read);
         mImageView = (ImageView) findViewById(R.id.iv_head_icon);
 
@@ -104,6 +110,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
             bean.nickName = "问答精灵";
             bean.sex = "男";
             bean.signature = "问答精灵";
+            bean.qq="8888888";
             //保存用户信息到数据库
             DBUtils.getInstance(this).saveUserInfo(bean);
         }
@@ -116,6 +123,8 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         tv_user_name.setText(bean.userName);
         tv_sex.setText(bean.sex);
         tv_signature.setText(bean.signature);
+        tv_qq.setText(bean.qq);
+
     }
 
     private void setListener() {
@@ -124,6 +133,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         rl_sex.setOnClickListener(this);
         rl_signature.setOnClickListener(this);
         rl_read.setOnClickListener(this);
+        rl_qq.setOnClickListener(this);
 
     }
 
@@ -190,6 +200,14 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                 bdSignature.putString("title", "签名");
                 bdSignature.putInt("flag", 2);//flag传递2表示修改 签名
                 enterActivityForResult(ChangeUserInfoActivity.class, CHANGE_SIGNATURE, bdSignature);
+                break;
+            case R.id.rl_qq:// 签名的点击事件
+                String qq = tv_qq.getText().toString();//获取签名控件上的数据
+                Bundle bdQq = new Bundle();
+                bdQq.putString("content", qq);//传递界面上的签名数据
+                bdQq.putString("title", "qq");
+                bdQq.putInt("flag", 3);//flag传递2表示修改 签名
+                enterActivityForResult(ChangeUserInfoActivity.class, CHANGE_QQ, bdQq);
                 break;
             case R.id.rl_read:
                 takePhoto();
@@ -298,6 +316,18 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                     tv_signature.setText(new_info);
                     //更新数据库中的签名 字段
                     DBUtils.getInstance(UserInfoActivity.this).updateUserInfo("signature", new_info, spUserName);
+                }
+
+                break;
+            case CHANGE_QQ://个人资料修改界面回传过来的数据
+                if (data != null) {
+                    String new_info = data.getStringExtra("qq");
+                    if (TextUtils.isEmpty(new_info)) {
+                        return;
+                    }
+                    tv_qq.setText(new_info);
+                    //更新数据库中的签名 字段
+                    DBUtils.getInstance(UserInfoActivity.this).updateUserInfo("qq", new_info, spUserName);
                 }
 
                 break;
